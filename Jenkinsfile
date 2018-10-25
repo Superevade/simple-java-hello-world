@@ -44,10 +44,17 @@ spec:
         }
       }
     }
+	stage('Build') {
+      steps {
+        container('docker') {
+          sh 'docker build -t my-app:$BUILD_NUMBER .'
+        }
+      }
+    }
 	stage('Test') {
       steps {
         container('maven') {
-          sh 'nvm test'
+          sh 'mvn test'
         }
       }
     }
