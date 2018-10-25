@@ -38,6 +38,8 @@ spec:
   stages {
 
     stage('Build') {
+	
+	mvn test
       steps {
         container('maven') {
           sh 'mvn -B -DskipTests clean package'
